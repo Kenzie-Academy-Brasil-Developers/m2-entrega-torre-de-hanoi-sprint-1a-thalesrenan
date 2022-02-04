@@ -1,8 +1,9 @@
 const tower = document.getElementsByClassName('tower')
 const pillars = document.getElementsByClassName('pillar')
 const disks = document.getElementsByClassName('disk')
-const body = document.getElementsByTagName('body')[0]
 const difficulty = document.getElementsByClassName('difficulty')
+const body = document.getElementsByTagName('body')[0]
+const footer = document.getElementsByTagName('footer')[0]
 const resetBtn = document.getElementsByClassName('reset')[0]
 const selectedDisk = document.getElementsByClassName('upAndBeyond')
 const head = document.getElementsByTagName('header')[0]
@@ -78,9 +79,10 @@ const victory = document.createElement('p')
 victory.classList.add('victory', 'hidden')
 head.appendChild(victory)
 
-//Reseta os disks
+//Reseta os discos
 function resetGame() {
   for (let i = 0; i < pillars.length; i++) {
+    footer.appendChild(resetBtn)
     pillars[i].innerHTML = ''
     clicks = 0
     clickCount.innerText = `${clicks} movimentos`
@@ -140,6 +142,5 @@ for (let i = 0; i < pillars.length; i++) {
       victory.innerText = 'Fim de Jogo!'
       victory.appendChild(resetBtn)
     }
-
   })
 }
