@@ -4,7 +4,7 @@ const disks = document.getElementsByClassName('disk')
 const body = document.getElementsByTagName('body')[0]
 const difficulty = document.getElementsByClassName('difficulty')
 const resetBtn = document.getElementsByClassName('reset')[0]
-const selectedDisk = document.getElementsByClassName('levanta')
+const selectedDisk = document.getElementsByClassName('upAndBeyond')
 const head = document.getElementsByTagName('header')[0]
 let minimumMovementsValue = Math.pow(2, disks.length) - 1
 let countMovements = 0
@@ -87,6 +87,7 @@ function resetGame() {
     countMinimumMovements.innerText = 'Movimentos mínimos: 0'
     countMovements = 0
     victory.innerText = ''
+    victory.classList.add('hidden')
   }
 }
 resetBtn.addEventListener('click', resetGame)
@@ -109,35 +110,36 @@ for (let i = 0; i < difficulty.length; i++) {
 
 //Levanta a peça e adiciona ao pilar
 for (let i = 0; i < pillars.length; i++) {
-  pillars[i].addEventListener('click', () => {
+  pillars[i].addEventListener('click', function playGame() {
 
     if (pillars[i].innerHTML === '' || pillars[i].lastElementChild === null) {
       countMovements += 1
       clickCount.innerText = `${countMovements} movimentos`
 
       pillars[i].appendChild(selectedDisk[0])
-      selectedDisk[0].classList.remove('levanta')
+      selectedDisk[0].classList.remove('upAndBeyond')
       selectedDisk[0].classList.add('wayDownWeGo')
     }
 
     if (pillars[i].innerHTML !== '' && selectedDisk.length === 0) {
       pillars[i].lastElementChild.classList.remove('wayDownWeGo')
-      pillars[i].lastElementChild.classList.add('levanta')
+      pillars[i].lastElementChild.classList.add('upAndBeyond')
     }
 
     if (selectedDisk[0].clientWidth < pillars[i].lastElementChild.clientWidth) {
       pillars[i].appendChild(selectedDisk[0])
-      pillars[i].lastElementChild.classList.remove('levanta')
+      pillars[i].lastElementChild.classList.remove('upAndBeyond')
       pillars[i].lastElementChild.classList.add('wayDownWeGo')
       countMovements += 1
     }
 
+    clickCount.innerText = `${countMovements} movimentos`
+
     if (pillars[2].childElementCount === disks.length) {
       victory.classList.remove('hidden')
       victory.innerText = 'Fim de Jogo!'
+      victory.appendChild(resetBtn)
     }
-
-    clickCount.innerText = `${countMovements} movimentos`
 
   })
 }
