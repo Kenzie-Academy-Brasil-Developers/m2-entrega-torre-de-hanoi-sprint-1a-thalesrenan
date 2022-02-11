@@ -9,7 +9,6 @@ const selectedDisk = document.getElementsByClassName('upAndBeyond')
 const head = document.getElementsByTagName('header')[0]
 let minimumMovementsValue = Math.pow(2, disks.length) - 1
 let countMovements = 0
-let clicks = 0
 
 //Cria os pilares
 function createTower() {
@@ -66,14 +65,6 @@ diskMovementsCount()
 
 const clickCount = document.getElementsByClassName('movements')[0]
 
-function click() {
-  clicks += 1
-}
-
-for (let i = 0; i < pillars.length; i++) {
-  pillars[i].addEventListener('click', click)
-}
-
 //Texto de fim de jogo
 const victory = document.createElement('p')
 victory.classList.add('victory', 'hidden')
@@ -84,8 +75,7 @@ function resetGame() {
   for (let i = 0; i < pillars.length; i++) {
     footer.appendChild(resetBtn)
     pillars[i].innerHTML = ''
-    clicks = 0
-    clickCount.innerText = `${clicks} movimentos`
+    clickCount.innerText = `${countMovements} movimentos`
     countMinimumMovements.innerText = 'Movimentos mínimos: 0'
     countMovements = 0
     victory.innerText = ''
@@ -99,8 +89,7 @@ for (let i = 0; i < difficulty.length; i++) {
   difficulty[i].addEventListener('click', () => {
     for (let i = 0; i < pillars.length; i++) {
       pillars[i].innerHTML = ''
-      clicks = 0
-      clickCount.innerText = `${clicks} movimentos`
+      clickCount.innerText = `${countMovements} movimentos`
       countMovements = 0
       victory.innerText = ''
     }
