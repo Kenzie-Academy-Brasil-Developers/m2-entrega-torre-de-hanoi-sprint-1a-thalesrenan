@@ -5,7 +5,7 @@ const difficulty = document.getElementsByClassName('difficulty')
 const body = document.getElementsByTagName('body')[0]
 const footer = document.getElementsByTagName('footer')[0]
 const resetBtn = document.getElementsByClassName('reset')[0]
-const selectedDisk = document.getElementsByClassName('upAndBeyond')
+const selectedDisk = document.getElementsByClassName('riseDisk')
 const head = document.getElementsByTagName('header')[0]
 let minimumMovementsValue = Math.pow(2, disks.length) - 1
 let countMovements = 0
@@ -108,25 +108,35 @@ for (let i = 0; i < pillars.length; i++) {
       clickCount.innerText = `${countMovements} movimentos`
 
       pillars[i].appendChild(selectedDisk[0])
-      selectedDisk[0].classList.remove('upAndBeyond')
-      selectedDisk[0].classList.add('wayDownWeGo')
+      selectedDisk[0].classList.remove('riseDisk')
+      selectedDisk[0].classList.add('dropDisk')
+    }
+
+    if (pillars[i].lastElementChild === selectedDisk[0]) {
+      pillars[i].appendChild(selectedDisk[0])
+      selectedDisk[0].classList.remove('riseDisk')
+      selectedDisk[0].classList.add('dropDisk')
     }
 
     if (pillars[i].innerHTML !== '' && selectedDisk.length === 0) {
-      pillars[i].lastElementChild.classList.remove('wayDownWeGo')
-      pillars[i].lastElementChild.classList.add('upAndBeyond')
+      pillars[i].lastElementChild.classList.remove('dropDisk')
+      pillars[i].lastElementChild.classList.add('riseDisk')
     }
 
     if (selectedDisk[0].clientWidth < pillars[i].lastElementChild.clientWidth) {
       pillars[i].appendChild(selectedDisk[0])
-      pillars[i].lastElementChild.classList.remove('upAndBeyond')
-      pillars[i].lastElementChild.classList.add('wayDownWeGo')
+      pillars[i].lastElementChild.classList.remove('riseDisk')
+      pillars[i].lastElementChild.classList.add('dropDisk')
       countMovements += 1
     }
 
     clickCount.innerText = `${countMovements} movimentos`
 
     if (pillars[2].childElementCount === disks.length) {
+      victory.classList.remove('hidden')
+      victory.innerText = 'Fim de Jogo!'
+      victory.appendChild(resetBtn)
+    } else if (pillars[1].childElementCount === disks.length) {
       victory.classList.remove('hidden')
       victory.innerText = 'Fim de Jogo!'
       victory.appendChild(resetBtn)

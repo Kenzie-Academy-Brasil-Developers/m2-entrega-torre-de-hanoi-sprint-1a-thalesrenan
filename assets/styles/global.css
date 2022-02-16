@@ -88,13 +88,13 @@ header{
   box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.4);
 }
 
-.upAndBeyond{
-  transition: all 1s;
+.riseDisk{
+  transition: all .5s;
   transform: translateY(-250px);
 }
 
-.wayDownWeGo{
-  transition: all ease 1s;
+.dropDisk{
+  transition: all ease .5s;
   transform: translateY(0px);
 }
 
