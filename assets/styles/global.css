@@ -89,12 +89,12 @@ header{
 }
 
 .riseDisk{
-  transition: all .5s;
+  transition: all .2s;
   transform: translateY(-250px);
 }
 
 .dropDisk{
-  transition: all ease .5s;
+  transition: all .2s;
   transform: translateY(0px);
 }
 

@@ -41,7 +41,7 @@ function createDisks(num) {
     pillars[0].appendChild(createDisks)
   }
 }
-createDisks()
+createDisks(2)
 
 //Movimentos
 const countMinimumMovements = document.createElement('p')
@@ -80,6 +80,7 @@ function resetGame() {
     countMovements = 0
     victory.innerText = ''
     victory.classList.add('hidden')
+    createDisks(2)
   }
 }
 resetBtn.addEventListener('click', resetGame)
@@ -99,6 +100,17 @@ for (let i = 0; i < difficulty.length; i++) {
   })
 }
 
+function dropDisk() {
+  selectedDisk[0].classList.add('dropDisk')
+  selectedDisk[0].classList.remove('riseDisk')
+}
+
+function showVictory() {
+  victory.classList.remove('hidden')
+  victory.innerText = 'Fim de Jogo!'
+  victory.appendChild(resetBtn)
+}
+
 //Levanta a peça e adiciona ao pilar
 for (let i = 0; i < pillars.length; i++) {
   pillars[i].addEventListener('click', function playGame() {
@@ -108,14 +120,12 @@ for (let i = 0; i < pillars.length; i++) {
       clickCount.innerText = `${countMovements} movimentos`
 
       pillars[i].appendChild(selectedDisk[0])
-      selectedDisk[0].classList.remove('riseDisk')
-      selectedDisk[0].classList.add('dropDisk')
+      setTimeout(dropDisk, 300)
     }
 
     if (pillars[i].lastElementChild === selectedDisk[0]) {
       pillars[i].appendChild(selectedDisk[0])
-      selectedDisk[0].classList.remove('riseDisk')
-      selectedDisk[0].classList.add('dropDisk')
+      setTimeout(dropDisk, 300)
     }
 
     if (pillars[i].innerHTML !== '' && selectedDisk.length === 0) {
@@ -125,21 +135,16 @@ for (let i = 0; i < pillars.length; i++) {
 
     if (selectedDisk[0].clientWidth < pillars[i].lastElementChild.clientWidth) {
       pillars[i].appendChild(selectedDisk[0])
-      pillars[i].lastElementChild.classList.remove('riseDisk')
-      pillars[i].lastElementChild.classList.add('dropDisk')
+      setTimeout(dropDisk, 300)
       countMovements += 1
     }
 
     clickCount.innerText = `${countMovements} movimentos`
 
     if (pillars[2].childElementCount === disks.length) {
-      victory.classList.remove('hidden')
-      victory.innerText = 'Fim de Jogo!'
-      victory.appendChild(resetBtn)
+      setTimeout(showVictory, 700)
     } else if (pillars[1].childElementCount === disks.length) {
-      victory.classList.remove('hidden')
-      victory.innerText = 'Fim de Jogo!'
-      victory.appendChild(resetBtn)
+      setTimeout(showVictory, 700)
     }
   })
 }
