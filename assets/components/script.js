@@ -7,7 +7,7 @@ const footer = document.getElementsByTagName('footer')[0]
 const resetBtn = document.getElementsByClassName('reset')[0]
 const selectedDisk = document.getElementsByClassName('riseDisk')
 const head = document.getElementsByTagName('header')[0]
-let minimumMovementsValue = Math.pow(2, disks.length) - 1
+let minimumMovementsValue = 7
 let countMovements = 0
 
 //Cria os pilares
@@ -76,7 +76,7 @@ function resetGame() {
     footer.appendChild(resetBtn)
     pillars[i].innerHTML = ''
     clickCount.innerText = `${countMovements} movimentos`
-    countMinimumMovements.innerText = 'Movimentos mínimos: 0'
+    countMinimumMovements.innerText = 'Movimentos mínimos: 7'
     countMovements = 0
     victory.innerText = ''
     victory.classList.add('hidden')
