@@ -1,0 +1,159 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Lato, 'sans-serif';
+}
+
+body{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;  
+  background-color:rgba(240, 230, 140, 0.7);
+}
+
+header{
+  display: flex;
+  flex-direction: column;
+}
+
+.dificulties{
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.victory{
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  background-color: rgba(4, 9, 17, 0.7);
+  font-size: 30px;
+  color:aliceblue;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+}
+
+.victory > button{
+  margin-top: 30px;
+}
+
+.difficulty{
+  width: 70px;
+  height: 30px;
+  margin: 20px;
+  border: none;
+  background-color: rgba(123, 104, 238, 0.7);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.hanoi{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.tower{
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  width: 300px;
+  height: 400px;
+  box-shadow: 0 4px 2px -1px rgba(0,0,0,0.4);
+  background-color:khaki;
+}
+
+.pillar{
+  border-radius: 5px 5px 0 0;
+  background-color: black;
+  display: flex; 
+  flex-direction: column-reverse; 
+  align-items: center;
+  width: 20px;
+  height: 200px;
+  cursor: pointer;
+}
+
+.disk{
+  height: 30px;
+  border-radius: 8px;
+  box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.4);
+}
+
+.riseDisk{
+  transition: all .2s;
+  transform: translateY(-250px);
+}
+
+.dropDisk{
+  transition: all .2s;
+  transform: translateY(0px);
+}
+
+.disk1{
+  width: 180px;
+  background-color: blueviolet;
+}
+
+.disk2{
+  width: 150px;
+  background-color:cadetblue;
+}
+
+.disk3{
+  width: 120px;
+  background-color: palevioletred;
+}
+
+.disk4{
+  width: 90px;
+  background-color: lightcoral;
+}
+
+.disk5{
+  width: 60px;
+  background-color: indianred;
+}
+
+footer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  order: 1;
+}
+
+.reset{
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  width: 100px;
+  height: 40px;
+  color: white;
+  background-color: red;
+  cursor: pointer;
+}
+
+.movements{
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.minimum{
+  text-align: center;
+  margin: 15px;
+  font-size: 18px;
+}
+
+.hidden{
+  display: none;
+}
